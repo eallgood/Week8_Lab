@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Week8_Lab.Models.View.UserViewModel>
+
+@{
+    ViewBag.Title = "List";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well"><h1>List</h1></div>
+
+@{
+    if (false)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+            <strong>Warning!</strong> Entity count surpassed 2!
+        </div>
+    }
+}
+
+<p>
+    @Html.ActionLink("Create New User", "Create", null, new { @class = "btn btn-success btn-lg" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearsInSchool)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearsInSchool)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Pets", "List", "Pet", new { userId = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+    @section scripts {
+        <script>
+            $(document).ready(function () {
+                $("#ShowTable").click(function () {
+                    $("table").fadeIn();
+                });
+
+                $("#HideTable").click(function () {
+                    $("table").fadeOut();
+                });
+
+                $(".clickableRows").click(function () {
+                    value = $(this).find('.name').text().trim();
+                    $("#ClickedRow").text(value);
+                });
+            });
+        </script>
+    }
+</table>
+
+<button type="button" class="btn btn-primary" id="ShowTable">Show Table</button>
+<button type="button" class="btn btn-primary" id="HideTable">Hide Table</button>

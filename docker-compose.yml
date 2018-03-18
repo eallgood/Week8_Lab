@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  week8_lab:
+    image: week8_lab
+    build:
+      context: .\Week8_Lab
+      dockerfile: Dockerfile

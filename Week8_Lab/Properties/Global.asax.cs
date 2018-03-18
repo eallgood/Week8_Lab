@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Week8_Lab.App_Start;
+using Week4_Lab.App_Start;
 
-namespace Week8_Lab
+namespace Week4_Lab
 {
     public class MvcApplication : System.Web.HttpApplication
     {
